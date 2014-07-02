@@ -2,8 +2,6 @@ from django.core.urlresolvers import reverse
 
 from django.contrib.contenttypes.models import ContentType
 
-from .models import Wiki
-
 
 class Binder(object):
 
@@ -31,6 +29,7 @@ class Binder(object):
         })
 
     def lookup(self, *args, **kwargs):
+        from .models import Wiki
         obj = self.get_object(**kwargs)
         return Wiki.objects.get(
             content_type=ContentType.objects.get_for_model(obj),
