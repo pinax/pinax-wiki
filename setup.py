@@ -23,6 +23,11 @@ setup(
     tests_require=[
         "Django>=1.4",
     ],
+    install_requires=[
+        "django-appconf>=0.6",
+        "django-user-accounts>=1.0c9",
+        "creole>=1.2"
+    ],
     test_suite="runtests.runtests",
     classifiers=[
         "Development Status :: 4 - Beta",
