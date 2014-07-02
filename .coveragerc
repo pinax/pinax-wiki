@@ -1,0 +1,4 @@
+[run]
+source = wiki
+omit = wiki/tests/*
+branch = 1
