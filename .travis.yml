@@ -10,7 +10,7 @@ install:
   - pip install $DJANGO flake8 coverage coveralls
   - pip install -e .
 script:
-  - flake8 --max-line-length=100 --max-complexity=10 --statistics --benchmark wiki
+  - flake8 --max-line-length=125 --max-complexity=10 --statistics --benchmark wiki
   - coverage run setup.py test
   - coverage report
 after_success: coveralls
