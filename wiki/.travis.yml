@@ -27,3 +27,11 @@ matrix:
      env: DJANGO=https://github.com/django/django/tarball/master
 
 after_success: coveralls
+
+notifications:
+  irc:
+    channels:
+      - "chat.freenode.net#pinax"
+    on_success: change
+    on_failure: change
+    use_notice: true
