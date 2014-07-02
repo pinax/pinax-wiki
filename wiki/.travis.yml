@@ -11,10 +11,8 @@ env:
   - DJANGO=Django==1.6.5
 
 install:
-  - pip install $DJANGO --use-mirrors
-  - pip install flake8 --use-mirrors
-  - pip install coverage coveralls --use-mirrors
-  - pip install -e . --use-mirrors
+  - pip install $DJANGO flake8 coverage coveralls
+  - pip install -e .
 
 script:
   - flake8 --max-line-length=100 --max-complexity=10 --statistics --benchmark wiki
