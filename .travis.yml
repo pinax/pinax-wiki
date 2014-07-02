@@ -1,6 +1,5 @@
 language: python
 python:
-  - 2.6
   - 2.7
   - 3.2
   - 3.3
@@ -14,10 +13,6 @@ script:
   - flake8 --max-line-length=100 --max-complexity=10 --statistics --benchmark wiki
   - coverage run setup.py test
   - coverage report
-matrix:
-  exclude:
-   - python: 2.6
-     env: DJANGO=https://github.com/django/django/tarball/master
 after_success: coveralls
 notifications:
   irc:
