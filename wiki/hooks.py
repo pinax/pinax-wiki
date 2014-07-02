@@ -15,12 +15,6 @@ class WikiDefaultHookset(object):
     def can_view_page(self, page, user):
         return False
 
-    def page_url(self, wiki, slug):
-        return "/"
-
-    def page_edit_url(self, wiki, slug):
-        return "/"
-
 
 class HookProxy(object):
 

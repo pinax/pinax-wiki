@@ -23,9 +23,18 @@ def load_path_attr(path):
 
 class WikiAppConf(AppConf):
 
+    BINDERS = [
+        "wiki.binders.DefaultBinder"
+    ]
     IP_ADDRESS_META_FIELD = "HTTP_X_FORWARDED_FOR"
     HOOKSET = "wiki.hooks.WikiDefaultHookset"
     PARSE = "wiki.parsers.creole_wikiword_parse"
+
+    def configure_binders(self, value):
+        binders = []
+        for val in value:
+            binders.append(load_path_attr(val)())
+        return binders
 
     def configure_hookset(self, value):
         return load_path_attr(value)()

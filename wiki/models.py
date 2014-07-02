@@ -11,7 +11,7 @@ from django.contrib.contenttypes.generic import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
 
 from .conf import settings
-from .hooks import hookset
+from .utils import binders_map, object_slug
 
 
 MEDIA_RE = re.compile(r"w/file-download/(\d+)/")
@@ -30,14 +30,16 @@ class Wiki(models.Model):
 
 
 class Page(models.Model):
-    wiki = models.ForeignKey(Wiki, related_name="pages")  # @@@ Could make
+    wiki = models.ForeignKey(Wiki, related_name="pages", null=True)
     slug = models.SlugField()
 
     def get_absolute_url(self):
-        return hookset.page_url(self.wiki, self.slug)
+        slug = object_slug(self.wiki)
+        return binders_map()[slug].page_url(self.wiki, self.slug)
 
     def get_edit_url(self):
-        return hookset.page_edit_url(self.wiki, self.slug)
+        slug = object_slug(self.wiki)
+        return binders_map()[slug].edit_url(self.wiki, self.slug)
 
     class Meta:
         unique_together = [("wiki", "slug")]

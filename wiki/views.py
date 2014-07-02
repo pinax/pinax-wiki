@@ -13,27 +13,33 @@ from .hooks import hookset
 from .models import Page, MediaFile
 
 
-def index(request, wiki_lookup, *args, **kwargs):
-    wiki = wiki_lookup(*args, **kwargs)
-    return redirect(hookset.page_url(wiki, "WikiIndex"))
+def index(request, binder, *args, **kwargs):
+    wiki = binder.lookup(*args, **kwargs)
+    return redirect(binder.page_url(wiki, "WikiIndex"))
 
 
-def page(request, slug, wiki_lookup, *args, **kwargs):
-    wiki = wiki_lookup(*args, **kwargs)
+def page(request, slug, binder, *args, **kwargs):
+    wiki = binder.lookup(*args, **kwargs)
     try:
-        page = wiki.pages.get(slug=slug)
+        if wiki:
+            page = wiki.pages.get(slug=slug)
+        else:
+            page = Page.objects.get(slug=slug)
         if not hookset.can_view_page(page, request.user):
             raise Http404()
         rev = page.revisions.latest()
         return render(request, "wiki/page.html", {"revision": rev, "can_edit": hookset.can_edit_page(page, request.user)})
     except Page.DoesNotExist:
-        return redirect(hookset.page_edit_url(wiki, slug))
+        return redirect(binder.edit_url(wiki, slug))
 
 
-def edit(request, slug, wiki_lookup, *args, **kwargs):
-    wiki = wiki_lookup(*args, **kwargs)
+def edit(request, slug, binder, *args, **kwargs):
+    wiki = binder.lookup(*args, **kwargs)
     try:
-        page = wiki.pages.get(slug=slug)
+        if wiki:
+            page = wiki.pages.get(slug=slug)
+        else:
+            page = Page.objects.get(slug=slug)
         rev = page.revisions.latest()
         if not hookset.can_edit_page(page, request.user):
             return HttpResponseForbidden()
@@ -53,7 +59,7 @@ def edit(request, slug, wiki_lookup, *args, **kwargs):
             revision.created_ip = request.META.get(settings.WIKI_IP_ADDRESS_META_FIELD, "REMOTE_ADDR")
             revision.parse()
             revision.save()
-            return redirect(hookset.page_url(wiki, slug))
+            return redirect(binder.page_url(wiki, slug))
     else:
         form = RevisionForm(revision=rev)
 

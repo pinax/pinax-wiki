@@ -2,7 +2,7 @@ import creole
 
 from creole.html_emitter import HtmlEmitter
 
-from .hooks import hookset
+from .utils import binders_map, object_slug
 
 
 class PinaxWikiHtmlEmitter(HtmlEmitter):
@@ -24,7 +24,8 @@ class PinaxWikiHtmlEmitter(HtmlEmitter):
                     self.attr_escape(target), inside)
             elif m.group('inter_wiki'):
                 raise NotImplementedError
-        page_url = hookset.page_url(self.wiki, target)
+        slug = object_slug(self.wiki)
+        page_url = binders_map()[slug].page_url(self.wiki, target)
         return u'<a href="{0}">{1}</a>'.format(self.attr_escape(page_url), inside)
 
 
