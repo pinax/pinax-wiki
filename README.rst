@@ -1,7 +1,7 @@
 pinax-wiki
 ========================
 
-.. image:: https://img.shields.io/travis/pianx/pinax-wiki.svg
+.. image:: https://img.shields.io/travis/pinax/pinax-wiki.svg
     :target: https://travis-ci.org/pinax/pinax-wiki
 
 .. image:: https://img.shields.io/coveralls/pinax/pinax-wiki.svg
