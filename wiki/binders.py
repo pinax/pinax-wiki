@@ -45,7 +45,7 @@ class DefaultBinder(Binder):
 
     @property
     def root(self):
-        return r""
+        return r"^wiki"
 
     def lookup(self, *args, **kwargs):
         return None
@@ -61,6 +61,9 @@ class DefaultBinder(Binder):
     @property
     def edit_url_name(self):
         return "wiki_edit"
+
+    def edit_url(self, wiki, slug):
+        return reverse("wiki_edit", kwargs={"slug": slug})
 
     def page_url(self, wiki, slug):
         return reverse("wiki_page", kwargs={"slug": slug})

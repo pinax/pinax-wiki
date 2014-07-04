@@ -33,6 +33,7 @@ def page(request, slug, binder, *args, **kwargs):
         return redirect(binder.edit_url(wiki, slug))
 
 
+@login_required
 def edit(request, slug, binder, *args, **kwargs):
     wiki = binder.lookup(*args, **kwargs)
     try:
