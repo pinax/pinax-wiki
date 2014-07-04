@@ -1,19 +1,19 @@
 pinax-wiki
 ========================
 
-.. image:: https://travis-ci.org/pinax/pinax-wiki.png
+.. image:: https://img.shields.io/travis/pianx/pinax-wiki.svg
     :target: https://travis-ci.org/pinax/pinax-wiki
 
-.. image:: https://coveralls.io/repos/pinax/pinax-wiki/badge.png
+.. image:: https://img.shields.io/coveralls/pinax/pinax-wiki.svg
     :target: https://coveralls.io/r/pinax/pinax-wiki
 
-.. image:: https://pypip.in/d/pinax-wiki/badge.png
+.. image:: https://img.shields.io/pypi/dm/pinax-wiki.svg
     :target:  https://pypi.python.org/pypi/pinax-wiki/
 
-.. image:: https://pypip.in/v/pinax-wiki/badge.png
+.. image:: https://img.shields.io/pypi/v/pinax-wiki.svg
     :target:  https://pypi.python.org/pypi/pinax-wiki/
 
-.. image:: https://pypip.in/license/pinax-wiki/badge.png
+.. image:: https://img.shields.io/badge/license-MIT-blue.svg
     :target:  https://pypi.python.org/pypi/pinax-wiki/
 
 
