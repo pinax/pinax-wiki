@@ -1,4 +1,4 @@
-Pinax- Wiki
+Pinax Wiki
 ========================
 .. image:: http://slack.pinaxproject.com/badge.svg
    :target: http://slack.pinaxproject.com/
