@@ -57,7 +57,7 @@ or::
 Documentation
 ---------------
 
-The Pinax documentation is available at http://pinaxproject.com/pinax/.
+The pinax-wiki documentation is available at http://pinax-wiki.readthedocs.org/en/latest/. The Pinax documentation is available at http://pinaxproject.com/pinax/. If you would like to help us improve our documentation or write more documentation, please join our Pinax Project Slack channel and let us know!
 
 
 Code of Conduct
