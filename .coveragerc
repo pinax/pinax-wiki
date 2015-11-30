@@ -1,4 +1,7 @@
 [run]
-source = wiki
-omit = wiki/tests/*
-branch = 1
+source = pinax
+omit = pinax/wiki/conf.py,pinax/wiki/tests/*,pinax/wiki/admin.py,pinax/wiki/migrations/*
+branch = true
+
+[report]
+omit = pinax/wiki/conf.py,pinax/wiki/tests/*,pinax/wiki/admin.py,pinax/wiki/migrations/*

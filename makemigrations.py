@@ -12,8 +12,8 @@ DEFAULT_SETTINGS = dict(
         "django.contrib.auth",
         "django.contrib.contenttypes",
         "django.contrib.sites",
-        "pinax.wiki",
-        "pinax.wiki.tests"
+        "wiki",
+        "wiki.tests"
     ],
     DATABASES={
         "default": {
@@ -22,12 +22,12 @@ DEFAULT_SETTINGS = dict(
         }
     },
     SITE_ID=1,
-    ROOT_URLCONF="pinax.wiki.tests.urls",
+    ROOT_URLCONF="wiki.tests.urls",
     SECRET_KEY="notasecret",
 )
 
 
-def runtests(*test_args):
+def run(*args):
     if not settings.configured:
         settings.configure(**DEFAULT_SETTINGS)
 
@@ -36,19 +36,12 @@ def runtests(*test_args):
     parent = os.path.dirname(os.path.abspath(__file__))
     sys.path.insert(0, parent)
 
-    try:
-        from django.test.runner import DiscoverRunner
-        runner_class = DiscoverRunner
-        if not test_args:
-            test_args = ["pinax.wiki.tests"]
-    except ImportError:
-        from django.test.simple import DjangoTestSuiteRunner
-        runner_class = DjangoTestSuiteRunner
-        test_args = ["tests"]
-
-    failures = runner_class(verbosity=1, interactive=True, failfast=False).run_tests(test_args)
-    sys.exit(failures)
+    django.core.management.call_command(
+        "makemigrations",
+        "pinax_wiki",
+        *args
+    )
 
 
 if __name__ == "__main__":
-    runtests(*sys.argv[1:])
+    run(*sys.argv[1:])

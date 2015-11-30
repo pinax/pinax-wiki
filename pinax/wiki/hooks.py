@@ -1,6 +1,3 @@
-from .conf import settings
-
-
 class WikiDefaultHookset(object):
 
     def can_create_page(self, wiki, user):
@@ -19,7 +16,8 @@ class WikiDefaultHookset(object):
 class HookProxy(object):
 
     def __getattr__(self, attr):
-        return getattr(settings.WIKI_HOOKSET, attr)
+        from django.conf import settings
+        return getattr(settings.PINAX_WIKI_HOOKSET, attr)
 
 
 hookset = HookProxy()

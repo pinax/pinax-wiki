@@ -7,7 +7,10 @@ from django.db import models
 from django.utils import timezone
 
 from django.contrib.auth.models import User
-from django.contrib.contenttypes.generic import GenericForeignKey
+try:
+    from django.contrib.contenttypes.fields import GenericForeignKey
+except ImportError:
+    from django.contrib.contenttypes.generic import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
 
 from .conf import settings
@@ -50,7 +53,7 @@ class Revision(models.Model):
     content = models.TextField(help_text="Use markdown to mark up your text")
     content_html = models.TextField()
     message = models.TextField(blank=True, help_text="Leave a helpful message about your change")
-    created_ip = models.IPAddressField()
+    created_ip = models.GenericIPAddressField()
     created_at = models.DateTimeField(default=timezone.now)
     created_by = models.ForeignKey(User, related_name="revisions_created")
     media = models.ManyToManyField("MediaFile", blank=True, related_name="revisions")
@@ -87,7 +90,7 @@ class MediaFile(models.Model):
     file = models.FileField(upload_to=uuid_filename)
 
     def download_url(self):
-        return reverse("wiki_file_download", args=[self.pk, os.path.basename(self.filename)])
+        return reverse("pinax_wiki_file_download", args=[self.pk, os.path.basename(self.filename)])
 
     def __unicode__(self):
         return self.filename

@@ -11,22 +11,21 @@ def read(*parts):
 
 
 setup(
-    author="",
-    author_email="",
-    description="",
+    author="Pinax Team",
+    author_email="team@pinaxproject.com",
+    description="a wiki app for Django sites",
     name="pinax-wiki",
     long_description=read("README.rst"),
-    version=__import__("wiki").__version__,
+    version="0.2.0",
     url="http://pinax-wiki.rtfd.org/",
     license="MIT",
     packages=find_packages(),
     tests_require=[
-        "Django>=1.4",
+        "Django>=1.7",
     ],
     install_requires=[
-        "django-appconf>=0.6",
-        "django-user-accounts>=1.0c9",
-        "creole>=1.2"
+        "django-appconf>=1.0.1",
+        "python-creole>=1.3.1"
     ],
     test_suite="runtests.runtests",
     classifiers=[

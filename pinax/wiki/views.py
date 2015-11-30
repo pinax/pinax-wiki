@@ -5,7 +5,10 @@ from django.shortcuts import redirect, render, get_object_or_404
 from django.views import static
 from django.views.decorators.http import require_POST
 
-from account.decorators import login_required
+try:
+    from account.decorators import login_required
+except ImportError:
+    from django.contrib.auth.decorators import login_required
 
 from .conf import settings
 from .forms import RevisionForm
@@ -28,7 +31,7 @@ def page(request, slug, binder, *args, **kwargs):
         if not hookset.can_view_page(page, request.user):
             raise Http404()
         rev = page.revisions.latest()
-        return render(request, "wiki/page.html", {"revision": rev, "can_edit": hookset.can_edit_page(page, request.user)})
+        return render(request, "pinax/wiki/page.html", {"revision": rev, "can_edit": hookset.can_edit_page(page, request.user)})
     except Page.DoesNotExist:
         return redirect(binder.edit_url(wiki, slug))
 
@@ -64,7 +67,7 @@ def edit(request, slug, binder, *args, **kwargs):
     else:
         form = RevisionForm(revision=rev)
 
-    return render(request, "wiki/edit.html", {
+    return render(request, "pinax/wiki/edit.html", {
         "form": form,
         "page": page,
         "revision": rev,

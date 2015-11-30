@@ -1,8 +1,9 @@
 from __future__ import absolute_import
 
+import importlib
+
 from django.conf import settings  # noqa
 from django.core.exceptions import ImproperlyConfigured
-from django.utils import importlib
 
 from appconf import AppConf
 
@@ -24,11 +25,14 @@ def load_path_attr(path):
 class WikiAppConf(AppConf):
 
     BINDERS = [
-        "wiki.binders.DefaultBinder"
+        "pinax.wiki.binders.DefaultBinder"
     ]
     IP_ADDRESS_META_FIELD = "HTTP_X_FORWARDED_FOR"
-    HOOKSET = "wiki.hooks.WikiDefaultHookset"
-    PARSE = "wiki.parsers.creole_wikiword_parse"
+    HOOKSET = "pinax.wiki.hooks.WikiDefaultHookset"
+    PARSE = "pinax.wiki.parsers.creole_wikiword_parse"
+
+    class Meta:
+        prefix = "pinax_wiki"
 
     def configure_binders(self, value):
         binders = []

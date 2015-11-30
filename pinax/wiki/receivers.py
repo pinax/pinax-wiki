@@ -16,6 +16,6 @@ def handle_object_save(sender, **kwargs):
         )
 
 
-for binder in settings.WIKI_BINDERS:
+for binder in settings.PINAX_WIKI_BINDERS:
     if binder.bind_to_model:
         post_save.connect(handle_object_save, sender=binder.bind_to_model)
