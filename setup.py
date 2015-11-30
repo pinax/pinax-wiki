@@ -16,7 +16,7 @@ setup(
     description="a wiki app for Django sites",
     name="pinax-wiki",
     long_description=read("README.rst"),
-    version="0.2.1",
+    version="0.2.2",
     url="http://pinax-wiki.rtfd.org/",
     license="MIT",
     packages=find_packages(),
