@@ -29,9 +29,5 @@ class PinaxWikiHtmlEmitter(creole.HtmlEmitter):
 
 
 def creole_parse(wiki, text):
-    return PinaxWikiHtmlEmitter(wiki, creole.Parser(text).parse()).emit()
-
-
-def creole_wikiword_parse(wiki, text):
-    rules = creole.Rules(wiki_words=True)
-    return PinaxWikiHtmlEmitter(wiki, creole.Parser(text, rules).parse()).emit()
+    document = creole.CreoleParser(text, blog_line_breaks=True).parse()
+    return PinaxWikiHtmlEmitter(wiki, document).emit()

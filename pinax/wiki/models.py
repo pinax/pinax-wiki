@@ -59,7 +59,7 @@ class Revision(models.Model):
     media = models.ManyToManyField("MediaFile", blank=True, related_name="revisions")
 
     def parse(self):
-        self.content_html = settings.WIKI_PARSE(self.page.wiki, self.content)
+        self.content_html = settings.PINAX_WIKI_PARSE(self.page.wiki, self.content)
 
     def process_media(self):
         pks = MEDIA_RE.findall(self.content)

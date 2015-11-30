@@ -60,7 +60,7 @@ def edit(request, slug, binder, *args, **kwargs):
             revision = form.save(commit=False)
             revision.page = page
             revision.created_by = request.user
-            revision.created_ip = request.META.get(settings.WIKI_IP_ADDRESS_META_FIELD, "REMOTE_ADDR")
+            revision.created_ip = request.META.get(settings.PINAX_WIKI_IP_ADDRESS_META_FIELD, "REMOTE_ADDR")
             revision.parse()
             revision.save()
             return redirect(binder.page_url(wiki, slug))

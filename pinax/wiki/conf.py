@@ -29,7 +29,7 @@ class WikiAppConf(AppConf):
     ]
     IP_ADDRESS_META_FIELD = "HTTP_X_FORWARDED_FOR"
     HOOKSET = "pinax.wiki.hooks.WikiDefaultHookset"
-    PARSE = "pinax.wiki.parsers.creole_wikiword_parse"
+    PARSE = "pinax.wiki.parsers.creole_parse"
 
     class Meta:
         prefix = "pinax_wiki"
