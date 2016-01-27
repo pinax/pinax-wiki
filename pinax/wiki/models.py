@@ -6,7 +6,6 @@ from django.core.urlresolvers import reverse
 from django.db import models
 from django.utils import timezone
 
-from django.contrib.auth.models import User
 try:
     from django.contrib.contenttypes.fields import GenericForeignKey
 except ImportError:
@@ -55,7 +54,7 @@ class Revision(models.Model):
     message = models.TextField(blank=True, help_text="Leave a helpful message about your change")
     created_ip = models.GenericIPAddressField()
     created_at = models.DateTimeField(default=timezone.now)
-    created_by = models.ForeignKey(User, related_name="revisions_created")
+    created_by = models.ForeignKey(settings.AUTH_USER_MODEL, related_name="revisions_created")
     media = models.ManyToManyField("MediaFile", blank=True, related_name="revisions")
 
     def parse(self):
@@ -84,7 +83,7 @@ def uuid_filename(instance, filename):
 
 class MediaFile(models.Model):
 
-    user = models.ForeignKey(User, related_name="media_files")
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, related_name="media_files")
     created = models.DateTimeField(editable=False, default=timezone.now)
     filename = models.CharField(max_length=255)
     file = models.FileField(upload_to=uuid_filename)
