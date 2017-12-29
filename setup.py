@@ -53,7 +53,7 @@ setup(
     description="a wiki app for Django sites",
     name="pinax-wiki",
     long_description=LONG_DESCRIPTION,
-    version="0.2.2",
+    version="1.0.0",
     url="http://github.com/pinax/pinax-wiki/",
     license="MIT",
     packages=find_packages(),
