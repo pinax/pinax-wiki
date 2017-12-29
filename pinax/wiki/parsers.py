@@ -19,9 +19,9 @@ class PinaxWikiHtmlEmitter(creole.HtmlEmitter):
             inside = self.html_escape(target)
         m = self.link_rules.addr_re.match(target)
         if m:
-            if m.group('extern_addr'):
+            if m.group("extern_addr"):
                 return '<a href="{}">{}</a>'.format(self.attr_escape(target), inside)
-            elif m.group('inter_wiki'):
+            elif m.group("inter_wiki"):
                 raise NotImplementedError
         slug = object_slug(self.wiki)
         page_url = binders_map()[slug].page_url(self.wiki, target)
