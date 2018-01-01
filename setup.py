@@ -62,7 +62,7 @@ setup(
         "pinax_wiki": []
     },
     tests_require=[
-        "Django>=1.7",
+        "django>=1.11",
     ],
     install_requires=[
         "django-appconf>=1.0.1",
