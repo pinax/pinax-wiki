@@ -2,25 +2,25 @@ import os
 import re
 import uuid
 
-from django.core.urlresolvers import reverse
+from django.contrib.contenttypes.models import ContentType
 from django.db import models
+from django.urls import reverse
 from django.utils import timezone
+
+from .conf import settings
+from .utils import binders_map, object_slug
 
 try:
     from django.contrib.contenttypes.fields import GenericForeignKey
 except ImportError:
     from django.contrib.contenttypes.generic import GenericForeignKey
-from django.contrib.contenttypes.models import ContentType
-
-from .conf import settings
-from .utils import binders_map, object_slug
 
 
 MEDIA_RE = re.compile(r"w/file-download/(\d+)/")
 
 
 class Wiki(models.Model):
-    content_type = models.ForeignKey(ContentType)
+    content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
     object_id = models.IntegerField()
     content_object = GenericForeignKey("content_type", "object_id")
 
@@ -32,7 +32,7 @@ class Wiki(models.Model):
 
 
 class Page(models.Model):
-    wiki = models.ForeignKey(Wiki, related_name="pages", null=True)
+    wiki = models.ForeignKey(Wiki, related_name="pages", null=True, on_delete=models.CASCADE)
     slug = models.SlugField()
 
     def get_absolute_url(self):
@@ -48,13 +48,13 @@ class Page(models.Model):
 
 
 class Revision(models.Model):
-    page = models.ForeignKey(Page, related_name="revisions")
+    page = models.ForeignKey(Page, related_name="revisions", on_delete=models.CASCADE)
     content = models.TextField(help_text="Use markdown to mark up your text")
     content_html = models.TextField()
     message = models.TextField(blank=True, help_text="Leave a helpful message about your change")
     created_ip = models.GenericIPAddressField()
     created_at = models.DateTimeField(default=timezone.now)
-    created_by = models.ForeignKey(settings.AUTH_USER_MODEL, related_name="revisions_created")
+    created_by = models.ForeignKey(settings.AUTH_USER_MODEL, related_name="revisions_created", on_delete=models.CASCADE)
     media = models.ManyToManyField("MediaFile", blank=True, related_name="revisions")
 
     def parse(self):
@@ -83,7 +83,7 @@ def uuid_filename(instance, filename):
 
 class MediaFile(models.Model):
 
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, related_name="media_files")
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, related_name="media_files", on_delete=models.CASCADE)
     created = models.DateTimeField(editable=False, default=timezone.now)
     filename = models.CharField(max_length=255)
     file = models.FileField(upload_to=uuid_filename)

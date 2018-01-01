@@ -1,9 +1,10 @@
+MANIFEST
+.DS_Store
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
 
-# C extensions
-*.so
 
 # Distribution / packaging
 .Python
@@ -11,6 +12,7 @@ env/
 build/
 develop-eggs/
 dist/
+docs/_build/
 eggs/
 lib/
 lib64/
@@ -21,6 +23,11 @@ var/
 .installed.cfg
 *.egg
 *.eggs
+.python-version
+
+# Pipfile
+Pipfile
+Pipfile.lock
 
 # Installer logs
 pip-log.txt
@@ -34,12 +41,5 @@ htmlcov/
 nosetests.xml
 coverage.xml
 
-# Translations
-*.mo
-*.pot
-
-# Django stuff:
-*.log
-
-# Sphinx documentation
-docs/_build/
+# IDEs
+.idea/

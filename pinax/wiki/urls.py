@@ -3,7 +3,9 @@ import os
 from django.conf.urls import url
 
 from .conf import settings
-from .views import index, page, edit, file_download, file_upload
+from .views import edit, file_download, file_upload, index, page
+
+app_name = "pinax_wiki"
 
 urlpatterns = [
     url(r"^file-download/(\d+)/([^/]+)$", file_download, name="pinax_wiki_file_download"),

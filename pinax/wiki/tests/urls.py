@@ -1,10 +1,5 @@
-try:
-    from django.conf.urls import patterns, include
-except ImportError:
-    from django.conf.urls.defaults import patterns, include
+from django.conf.urls import include, url
 
-
-urlpatterns = patterns(
-    "",
-    (r"^", include("pinax.wiki.urls")),
-)
+urlpatterns = [
+    url(r"^", include("pinax.wiki.urls", namespace="pinax_wiki")),
+]
