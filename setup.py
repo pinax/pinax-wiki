@@ -1,5 +1,6 @@
 from setuptools import find_packages, setup
 
+VERSION = "1.0.0"
 LONG_DESCRIPTION = """
 .. image:: http://pinaxproject.com/pinax-design/patches/blank.svg
     :target: https://pypi.python.org/pypi/pinax-wiki/
@@ -53,7 +54,7 @@ setup(
     description="a wiki app for Django sites",
     name="pinax-wiki",
     long_description=LONG_DESCRIPTION,
-    version="1.0.0",
+    version=VERSION,
     url="http://github.com/pinax/pinax-wiki/",
     license="MIT",
     packages=find_packages(),
