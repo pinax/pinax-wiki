@@ -83,6 +83,7 @@ Finally, add `pinax.wiki.urls` to your project urlpatterns:
 * Move documentation into README and standardize layout
 * Convert CI and coverage to CircleCi and CodeCov
 * Add PyPi-compatible long description
+* Remove doc build support
 
 ## Contribute
 
