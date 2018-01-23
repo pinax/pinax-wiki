@@ -12,15 +12,15 @@ class Binder(object):
 
     @property
     def index_url_name(self):
-        return "{0}_index".format(self.bind_to_model_name)
+        return "pinax_wiki:{0}_index".format(self.bind_to_model_name)
 
     @property
     def page_url_name(self):
-        return "{0}_page".format(self.bind_to_model_name)
+        return "pinax_wiki:{0}_page".format(self.bind_to_model_name)
 
     @property
     def edit_url_name(self):
-        return "{0}_edit".format(self.bind_to_model_name)
+        return "pinax_wiki:{0}_edit".format(self.bind_to_model_name)
 
     def get_object(self, **kwargs):
         return self.bind_to_model._default_manager.get(**{
@@ -51,15 +51,15 @@ class DefaultBinder(Binder):
 
     @property
     def index_url_name(self):
-        return "index"
+        return "pinax_wiki:index"
 
     @property
     def page_url_name(self):
-        return "page"
+        return "pinax_wiki:page"
 
     @property
     def edit_url_name(self):
-        return "edit"
+        return "pinax_wiki:edit"
 
     def edit_url(self, wiki, slug):
         return reverse(self.edit_url_name, kwargs={"slug": slug})

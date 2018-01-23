@@ -16,6 +16,8 @@
 * [About Pinax](#about-pinax)
 * [Overview](#overview)
   * [Supported Django and Python versions](#supported-django-and-python-versions)
+* [Documentation](#documentation)
+  * [Installation](#installation)
 * [Change Log](#change-log)
 * [Contribute](#contribute)
 * [Code of Conduct](#code-of-conduct)
@@ -42,11 +44,41 @@ Django \ Python | 2.7 | 3.4 | 3.5 | 3.6
 2.0  |     |  *  |  *  |  *
 
 
+## Documentation
+
+
+### Installation
+
+To install pinax-wiki:
+
+```shell
+    $ pip install pinax-wiki
+```
+
+Add `pinax.wiki` to your `INSTALLED_APPS` setting:
+
+```python
+    INSTALLED_APPS = [
+        # other apps
+        "pinax.wiki",
+    ]
+```
+
+Finally, add `pinax.wiki.urls` to your project urlpatterns:
+
+```python
+    urlpatterns = [
+        # other urls
+        url(r"^wiki/", include("pinax.wiki.urls", namespace="pinax_wiki")),
+    ]
+```
+
+
 ## Change Log
 
 ### 1.0.0
 
-* Add Django 2.0 compatibility testing
+* Add Django 2.0 support.
 * Drop Django 1.8, 1.9, 1.10 and Python 3.3 support
 * Move documentation into README and standardize layout
 * Convert CI and coverage to CircleCi and CodeCov
