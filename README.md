@@ -78,6 +78,10 @@ Finally, add `pinax.wiki.urls` to your project urlpatterns:
 
 ## Change Log
 
+### 1.0.1
+
+* Fix binders URLs
+
 ### 1.0.0
 
 * Add Django 2.0 support.
