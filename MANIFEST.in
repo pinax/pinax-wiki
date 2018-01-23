@@ -1,5 +1,3 @@
 include AUTHORS
 include LICENSE
 include README.md
-recursive-include wiki/static *
-recursive-include wiki/templates *

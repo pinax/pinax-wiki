@@ -30,7 +30,7 @@ Pinax Wiki
 .. image:: http://slack.pinaxproject.com/badge.svg
     :target: http://slack.pinaxproject.com/
 .. image:: https://img.shields.io/badge/license-MIT-blue.svg
-    :target: https://opensource.org/licenses/MIT/
+    :target: https://opensource.org/licenses/MIT
 
 \ 
 
@@ -61,14 +61,6 @@ setup(
     package_data={
         "pinax_wiki": []
     },
-    tests_require=[
-        "django>=1.11",
-    ],
-    install_requires=[
-        "django-appconf>=1.0.1",
-        "python-creole>=1.3.1"
-    ],
-    test_suite="runtests.runtests",
     classifiers=[
         "Development Status :: 5 - Production/Stable",
         "Environment :: Web Environment",
@@ -87,5 +79,13 @@ setup(
         'Programming Language :: Python :: 3.6',
         "Topic :: Software Development :: Libraries :: Python Modules",
     ],
+    install_requires=[
+        "django>=1.11",
+        "django-appconf>=1.0.1",
+        "python-creole>=1.3.1"
+    ],
+    tests_require=[
+    ],
+    test_suite="runtests.runtests",
     zip_safe=False
 )

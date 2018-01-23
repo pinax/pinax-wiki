@@ -8,8 +8,8 @@ from .views import edit, file_download, file_upload, index, page
 app_name = "pinax_wiki"
 
 urlpatterns = [
-    url(r"^file-download/(\d+)/([^/]+)$", file_download, name="pinax_wiki_file_download"),
-    url(r"^file-upload/$", file_upload, name="pinax_wiki_file_upload")
+    url(r"^file-download/(\d+)/([^/]+)$", file_download, name="file_download"),
+    url(r"^file-upload/$", file_upload, name="file_upload")
 ]
 
 for binder in settings.PINAX_WIKI_BINDERS:
