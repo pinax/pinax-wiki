@@ -89,7 +89,7 @@ class MediaFile(models.Model):
     file = models.FileField(upload_to=uuid_filename)
 
     def download_url(self):
-        return reverse("pinax_wiki_file_download", args=[self.pk, os.path.basename(self.filename)])
+        return reverse("pinax_wiki:file_download", args=[self.pk, os.path.basename(self.filename)])
 
     def __unicode__(self):
         return self.filename

@@ -6,7 +6,7 @@ from ..models import Wiki
 register = template.Library()
 
 
-@register.assignment_tag
+@register.simple_tag
 def wiki_for(obj):
     return Wiki.objects.get(
         object_id=obj.pk,

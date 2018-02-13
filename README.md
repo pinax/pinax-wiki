@@ -78,6 +78,11 @@ Finally, add `pinax.wiki.urls` to your project urlpatterns:
 
 ## Change Log
 
+### 1.0.2
+
+* Update templatetag decorator to `simple_tag`
+* Fix `MediaFile.download_url` method
+
 ### 1.0.1
 
 * Fix binders URLs
