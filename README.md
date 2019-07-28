@@ -65,7 +65,7 @@ Add `pinax.wiki` to your `INSTALLED_APPS` setting:
     ]
 ```
 
-Finally, add `pinax.wiki.urls` to your project urlpatterns:
+Add `pinax.wiki.urls` to your project urlpatterns:
 
 ```python
     urlpatterns = [
