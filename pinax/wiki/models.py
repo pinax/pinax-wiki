@@ -68,7 +68,7 @@ class Revision(models.Model):
             self.media.add(mf)
 
     def save(self, *args, **kwargs):
-        super(Revision, self).save(*args, **kwargs)
+        super().save(*args, **kwargs)
         self.process_media()
 
     class Meta:

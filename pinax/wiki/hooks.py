@@ -1,4 +1,4 @@
-class WikiDefaultHookset(object):
+class WikiDefaultHookset():
 
     def can_create_page(self, wiki, user):
         return False
@@ -13,7 +13,7 @@ class WikiDefaultHookset(object):
         return False
 
 
-class HookProxy(object):
+class HookProxy():
 
     def __getattr__(self, attr):
         from django.conf import settings
