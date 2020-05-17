@@ -77,7 +77,7 @@ class Revision(models.Model):
 
 def uuid_filename(instance, filename):
     ext = filename.split(".")[-1]
-    filename = "{0}.{1}".format(uuid.uuid4(), ext)
+    filename = f"{uuid.uuid4()}.{ext}"
     return os.path.join("revision-files", filename)
 
 

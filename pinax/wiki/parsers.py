@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 import creole
 
 from .utils import binders_map, object_slug
