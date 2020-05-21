@@ -10,7 +10,7 @@ class RevisionForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         self.revision = kwargs.pop("revision")
-        super(RevisionForm, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         if self.revision:
             self.fields["content"].initial = self.revision.content
             self.fields["revision_pk"].initial = self.revision.pk

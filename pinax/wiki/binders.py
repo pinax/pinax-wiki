@@ -2,7 +2,7 @@ from django.contrib.contenttypes.models import ContentType
 from django.urls import reverse
 
 
-class Binder(object):
+class Binder:
 
     bind_to_model = None
 
@@ -12,15 +12,15 @@ class Binder(object):
 
     @property
     def index_url_name(self):
-        return "{0}_index".format(self.bind_to_model_name)
+        return f"{self.bind_to_model_name}_index"
 
     @property
     def page_url_name(self):
-        return "{0}_page".format(self.bind_to_model_name)
+        return f"{self.bind_to_model_name}_page"
 
     @property
     def edit_url_name(self):
-        return "{0}_edit".format(self.bind_to_model_name)
+        return f"{self.bind_to_model_name}_edit"
 
     def get_object(self, **kwargs):
         return self.bind_to_model._default_manager.get(**{
@@ -62,7 +62,7 @@ class DefaultBinder(Binder):
         return "edit"
 
     def edit_url(self, wiki, slug):
-        return reverse("pinax_wiki:{}".format(self.edit_url_name), kwargs={"slug": slug})
+        return reverse(f"pinax_wiki:{self.edit_url_name}", kwargs={"slug": slug})
 
     def page_url(self, wiki, slug):
-        return reverse("pinax_wiki:{}".format(self.page_url_name), kwargs={"slug": slug})
+        return reverse(f"pinax_wiki:{self.page_url_name}", kwargs={"slug": slug})

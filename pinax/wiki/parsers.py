@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 import creole
 
 from .utils import binders_map, object_slug
@@ -9,7 +7,7 @@ class PinaxWikiHtmlEmitter(creole.HtmlEmitter):
 
     def __init__(self, wiki, root, link_rules=None):
         self.wiki = wiki
-        super(PinaxWikiHtmlEmitter, self).__init__(root, link_rules)
+        super().__init__(root, link_rules)
 
     def link_emit(self, node):
         target = node.content
